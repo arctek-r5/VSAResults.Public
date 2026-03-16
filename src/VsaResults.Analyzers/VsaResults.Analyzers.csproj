@@ -1,0 +1,29 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <LangVersion>12.0</LangVersion>
+    <Nullable>enable</Nullable>
+    <IsPackable>false</IsPackable>
+    <EnforceExtendedAnalyzerRules>true</EnforceExtendedAnalyzerRules>
+
+    <!-- Override Directory.Build.props settings incompatible with netstandard2.0 analyzer -->
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <GenerateDocumentationFile>false</GenerateDocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <InternalsVisibleTo Include="Tests.Analyzers" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.CodeAnalysis.CSharp" PrivateAssets="all" />
+  </ItemGroup>
+
+  <!-- Remove StyleCop (inherited from Directory.Build.props, incompatible with netstandard2.0) -->
+  <ItemGroup>
+    <PackageReference Remove="StyleCop.Analyzers" />
+    <PackageReference Remove="Microsoft.SourceLink.GitHub" />
+  </ItemGroup>
+
+</Project>

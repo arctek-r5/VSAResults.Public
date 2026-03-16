@@ -1,0 +1,13 @@
+<Project>
+
+  <PropertyGroup>
+    <!-- Default: warn so wide-event enforcement participates in normal builds. -->
+    <VsaWideEventEnforcement Condition="'$(VsaWideEventEnforcement)' == ''">warn</VsaWideEventEnforcement>
+  </PropertyGroup>
+
+  <!-- Make the property visible to the Roslyn analyzer at compile time -->
+  <ItemGroup>
+    <CompilerVisibleProperty Include="VsaWideEventEnforcement" />
+  </ItemGroup>
+
+</Project>

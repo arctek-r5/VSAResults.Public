@@ -1,0 +1,12 @@
+<Solution>
+  <Project Path="src/VsaResults/VsaResults.csproj" />
+  <Project Path="src/VsaResults.Analyzers/VsaResults.Analyzers.csproj" />
+  <Project Path="src/VsaResults.AspNetCore/VsaResults.AspNetCore.csproj" />
+  <Project Path="src/VsaResults.Features/VsaResults.Features.csproj" />
+  <Project Path="src/VsaResults.Messaging/VsaResults.Messaging.csproj" />
+  <Project Path="src/VsaResults.Messaging.AzureServiceBus/VsaResults.Messaging.AzureServiceBus.csproj" />
+  <Project Path="src/VsaResults.Messaging.Kafka/VsaResults.Messaging.Kafka.csproj" />
+  <Project Path="src/VsaResults.Messaging.PostgreSql/VsaResults.Messaging.PostgreSql.csproj" />
+  <Project Path="src/VsaResults.Messaging.RabbitMq/VsaResults.Messaging.RabbitMq.csproj" />
+  <Project Path="src/VsaResults.Observability/VsaResults.Observability.csproj" />
+</Solution>

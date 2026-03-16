@@ -1,0 +1,58 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <NoWarn>$(NoWarn);CS1591</NoWarn>
+    <PackageId>VsaResults.Features</PackageId>
+    <Version>1.0.0</Version>
+    <Authors>ArcTek</Authors>
+    <PackageTags>VSA;VerticalSliceArchitecture;Features;Pipeline;WideEvents;Observability;CQRS</PackageTags>
+    <Description>VSA feature pipeline with query/mutation patterns and wide events observability for VsaResults.</Description>
+    <PackageProjectUrl>https://github.com/arctek-r5/VSAResults.Public</PackageProjectUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <RepositoryUrl>https://github.com/arctek-r5/VSAResults.Public</RepositoryUrl>
+    <PackageOutputPath>../../artifacts/</PackageOutputPath>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="../VsaResults/VsaResults.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FluentValidation" />
+    <PackageReference Include="JetBrains.Annotations" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="README.md" Pack="true" PackagePath="" />
+    <None Include="../../LICENSE" Pack="true" PackagePath="" />
+  </ItemGroup>
+
+  <!-- Pack the Roslyn analyzer into the NuGet package -->
+  <ItemGroup>
+    <ProjectReference Include="../VsaResults.Analyzers/VsaResults.Analyzers.csproj"
+                      ReferenceOutputAssembly="false"
+                      OutputItemType="None"
+                      SetTargetFramework="TargetFramework=netstandard2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="../VsaResults.Analyzers/bin/$(Configuration)/netstandard2.0/VsaResults.Analyzers.dll"
+          Pack="true"
+          PackagePath="analyzers/dotnet/cs"
+          Visible="false" />
+    <None Include="../VsaResults.Analyzers/build/VsaResults.Features.props"
+          Pack="true"
+          PackagePath="buildTransitive"
+          Visible="false" />
+    <None Include="../VsaResults.Analyzers/build/VsaResults.Features.props"
+          Pack="true"
+          PackagePath="build"
+          Visible="false" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,15 @@
+[*.cs]
+# =============================================================================
+# VsaResults.Features Framework Library — Analyzer Suppressions
+# =============================================================================
+
+# --- Type suffix "Permission" (CA1711) ---
+# IFeaturePermission/NoOpPermission are domain types in the feature pipeline.
+# "Permission" accurately describes the abstraction — renaming would hurt clarity.
+dotnet_diagnostic.CA1711.severity = none
+
+# --- LoggerMessage delegates (CA1848) ---
+# Wide event sinks use dynamic log levels and structured property bags.
+# LoggerMessage.Define requires compile-time fixed parameters, which doesn't
+# fit the variable-shape wide event model.
+dotnet_diagnostic.CA1848.severity = none

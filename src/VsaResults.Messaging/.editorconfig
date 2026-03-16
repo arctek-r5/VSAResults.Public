@@ -1,0 +1,21 @@
+[*.cs]
+
+# CA1805: Do not initialize unnecessarily
+# Style preference — explicit defaults are intentional for clarity across 18+ locations.
+dotnet_diagnostic.CA1805.severity = none
+
+# CA1848: Use the LoggerMessage delegates
+# Messaging pipeline uses dynamic log patterns that don't fit LoggerMessage constraints.
+dotnet_diagnostic.CA1848.severity = none
+
+# CA1716: Identifiers should not match keywords
+# Intentional domain naming (e.g., "Event", "message" parameters).
+dotnet_diagnostic.CA1716.severity = none
+
+# CA1711: Identifiers should not have incorrect suffix
+# Intentional naming conventions for messaging types.
+dotnet_diagnostic.CA1711.severity = none
+
+# CA1000: Do not declare static members on generic types
+# Factory pattern on generic types is intentional (e.g., State.Create, MessageEnvelope.Create<T>).
+dotnet_diagnostic.CA1000.severity = none

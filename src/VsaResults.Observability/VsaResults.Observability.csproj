@@ -1,0 +1,32 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <PackageId>VsaResults.Observability</PackageId>
+    <Version>1.0.0</Version>
+    <Authors>ArcTek</Authors>
+    <PackageTags>VsaResults;PII;Masking;Observability;WideEvents;Privacy</PackageTags>
+    <Description>PII masking and observability extensions for VsaResults. Provides extensible masking for wide events and structured logging.</Description>
+    <PackageProjectUrl>https://github.com/arctek-r5/VSAResults.Public</PackageProjectUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <RepositoryUrl>https://github.com/arctek-r5/VSAResults.Public</RepositoryUrl>
+    <PackageOutputPath>../../artifacts/</PackageOutputPath>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="../VsaResults.Features/VsaResults.Features.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" />
+    <PackageReference Include="Microsoft.Extensions.Options" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="README.md" Pack="true" PackagePath="" />
+    <None Include="../../LICENSE" Pack="true" PackagePath="" />
+  </ItemGroup>
+
+</Project>

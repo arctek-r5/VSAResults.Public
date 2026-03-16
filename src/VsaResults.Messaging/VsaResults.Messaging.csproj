@@ -1,0 +1,46 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <NoWarn>$(NoWarn);SA1402;SA1201;SA1202;SA1204;SA1214;SA1407;SA1413;SA1623;SA1624;SA1629;SA1117;SA1128;CS0414</NoWarn>
+    <PackageId>VsaResults.Messaging</PackageId>
+    <Version>2.0.0</Version>
+    <Authors>ArcTek</Authors>
+    <PackageTags>VSA;VerticalSliceArchitecture;Messaging;MessageBus;PubSub;Events;Commands</PackageTags>
+    <Description>A MassTransit-compatible messaging library for VsaResults with result-based consumer pipelines, sagas, and multiple transport support. For RabbitMQ support, add the VsaResults.Messaging.RabbitMq package.</Description>
+    <PackageProjectUrl>https://github.com/arctek-r5/VSAResults.Public</PackageProjectUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <RepositoryUrl>https://github.com/arctek-r5/VSAResults.Public</RepositoryUrl>
+    <PackageOutputPath>../../artifacts/</PackageOutputPath>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+  </PropertyGroup>
+
+  <!-- Allow transport packages to access internal members -->
+  <ItemGroup>
+    <InternalsVisibleTo Include="VsaResults.Messaging.RabbitMq" />
+    <InternalsVisibleTo Include="VsaResults.Messaging.Kafka" />
+    <InternalsVisibleTo Include="VsaResults.Messaging.AzureServiceBus" />
+    <InternalsVisibleTo Include="VsaResults.Messaging.PostgreSql" />
+    <InternalsVisibleTo Include="VsaResults.Messaging.Tests" />
+    <InternalsVisibleTo Include="ProvisioningWorker.Tests" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="../VsaResults/VsaResults.csproj" />
+    <ProjectReference Include="../VsaResults.Features/VsaResults.Features.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="JetBrains.Annotations" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" />
+    <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="README.md" Pack="true" PackagePath="" />
+    <None Include="../../LICENSE" Pack="true" PackagePath="" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,36 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <NoWarn>$(NoWarn);SA1402;SA1201;SA1202;SA1204;SA1214;SA1407;SA1413;SA1623;SA1624;SA1629;SA1117;SA1128;CS0414</NoWarn>
+    <PackageId>VsaResults.Messaging.RabbitMq</PackageId>
+    <Version>1.0.0</Version>
+    <Authors>ArcTek</Authors>
+    <PackageTags>VSA;VerticalSliceArchitecture;Messaging;RabbitMQ;Transport</PackageTags>
+    <Description>RabbitMQ transport extension for VsaResults.Messaging.</Description>
+    <PackageProjectUrl>https://github.com/arctek-r5/VSAResults.Public</PackageProjectUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <RepositoryUrl>https://github.com/arctek-r5/VSAResults.Public</RepositoryUrl>
+    <PackageOutputPath>../../artifacts/</PackageOutputPath>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <InternalsVisibleTo Include="VsaResults.Messaging.RabbitMq.Tests" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="../VsaResults.Messaging/VsaResults.Messaging.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="RabbitMQ.Client" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="README.md" Pack="true" PackagePath="" />
+    <None Include="../../LICENSE" Pack="true" PackagePath="" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,54 @@
+[*.cs]
+# =============================================================================
+# VsaResults Framework Library — Analyzer Suppressions
+#
+# VsaResults is a public framework library (discriminated union / railway-oriented
+# error handling). Its API surface intentionally uses patterns that trigger CA rules
+# designed for application code, not library code.
+# =============================================================================
+
+# --- Null validation (CA1062) ---
+# Framework methods use nullable annotations + ThrowIfNull where appropriate.
+# CA1062 fires on every public method parameter — not actionable for a library
+# with hundreds of extension methods that rely on caller-side null checks.
+dotnet_diagnostic.CA1062.severity = none
+
+# --- TaskScheduler (CA2008) ---
+# ContinueWith calls in VsaResult combinators use TaskScheduler.Default explicitly
+# or operate on already-completed tasks (synchronous fast paths).
+dotnet_diagnostic.CA2008.severity = none
+
+# --- Static members on generic types (CA1000) ---
+# VsaResult<T>.From(), factory methods, and static helpers are the standard pattern
+# for discriminated unions (same as Result<T>, Option<T>, ErrorOr<T>).
+dotnet_diagnostic.CA1000.severity = none
+
+# --- Operator alternate methods (CA2225) ---
+# Implicit conversions (TValue -> VsaResult, Error -> VsaResult) are the core API.
+# Named alternates would duplicate the factory methods that already exist.
+dotnet_diagnostic.CA2225.severity = none
+
+# --- List<T> in public API (CA1002) ---
+# VsaResult stores errors as List<Error> internally and exposes them via
+# IReadOnlyList<Error>. The List<Error> constructors/factories are intentional
+# for performance (avoid allocation from collection conversion).
+dotnet_diagnostic.CA1002.severity = none
+
+# --- Catch general Exception (CA1031) ---
+# VsaResult.Try/TryAsync catches Exception by design — it's a railway-oriented
+# error boundary that converts any exception into a VsaResult error.
+dotnet_diagnostic.CA1031.severity = none
+
+# --- Type/namespace name conflict (CA1724) ---
+# VsaResult type in VsaResults.VsaResult namespace is intentional.
+dotnet_diagnostic.CA1724.severity = none
+
+# --- Reserved keyword 'Error' (CA1716) ---
+# Error is the domain type name — renaming would break the entire API surface.
+dotnet_diagnostic.CA1716.severity = none
+
+# --- Exception in implicit operator (CA1065 / S3877) ---
+# The Error[] implicit operator validates null input. Accepting null silently
+# would be worse than throwing. This matches ErrorOr, OneOf, and similar libraries.
+dotnet_diagnostic.CA1065.severity = none
+dotnet_diagnostic.S3877.severity = none
